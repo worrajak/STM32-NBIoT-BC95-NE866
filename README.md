@@ -79,3 +79,16 @@ Setup
 
   previousMillis = millis();
 ```  
+
+Loop Program
+
+```  
+void loop()
+{ 
+      readData();     
+      String DataSend ="{\"id\":\"NB-IoT-1\",\"temperature\":"+String(temperature)+",\"humidity\":"+String(humidity)+",\"flowrate\":"+String(flowRate)+",\"level\":"+String(cm)+"}";
+      UDPSend udp = AISnb.sendUDPmsgStr(serverIP, serverPort, DataSend);
+      UDPReceive resp = AISnb.waitResponse(); 
+      delay(10000); 
+}
+```  
